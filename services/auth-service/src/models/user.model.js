@@ -1,4 +1,3 @@
-// src/models/user.model.js
 const prisma = require('../config/prisma');
 
 const createUser = async (email, passwordHash) => {

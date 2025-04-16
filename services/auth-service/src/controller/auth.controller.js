@@ -1,9 +1,9 @@
-const express = require("express");
-const  router = express.Router();
-const AuthService = require("../services/auth.service");
-const { RegisterLogininputValidation } = require("../utils/validation");
 
-router.post("/register", RegisterLogininputValidation, async (req, res) => {
+const AuthService = require("../services/auth.service");
+
+
+
+module.exports.registerController = async (req, res) => {
     try {
         const user = await AuthService.register(req.body);
         res.status(201).json({
@@ -18,10 +18,10 @@ router.post("/register", RegisterLogininputValidation, async (req, res) => {
             error: true,
         });
     }
-});
+}
 
 
-router.post("/login", RegisterLogininputValidation, async (req, res) => {
+module.exports.loginController = async (req, res) => {
     try {
         const user = await AuthService.login(req.body);
         res.status(200).json({
@@ -36,8 +36,4 @@ router.post("/login", RegisterLogininputValidation, async (req, res) => {
             error: true,
         });
     }
-});
-
-
-
-module.exports = router
+}
